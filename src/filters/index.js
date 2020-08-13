@@ -1,4 +1,4 @@
 import Vue from 'vue'
-import * as filter from './filter'
+import * as filters from './filters'
 
-Object.keys(filter).forEach(k => Vue.filter(k, filter[k]))
+Object.keys(filters).forEach(k => Vue.filter(k, filters[k]))
