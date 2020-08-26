@@ -62,6 +62,15 @@ service.interceptors.response.use(
       }, 1000)
       await store.dispatch('user/fedLogOut')
       window.location.href = 'http://tah.imtda.com'
+    } else if (response.data.code === 302) {
+      setTimeout(() => {
+        Toast({
+          message: response.data.desc,
+          duration: 2000
+        })
+      }, 1000)
+      await store.dispatch('user/fedLogOut')
+      window.location.href = 'http://tah.imtda.com/#/register'
     } else {
       Toast({
         message: response.data.desc,

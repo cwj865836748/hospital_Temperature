@@ -3,6 +3,13 @@
     <div class="logoTitle">注册</div>
     <div class="loginForm">
       <div class="fieldInput">
+        <span>真实姓名</span>
+        <van-field :style="{borderBottom:styleBorder.realNameStyle}"  v-model="loginForm.realName" placeholder="请输入真实姓名" maxlength="4" @focus="focusStyle(4)"  @blur="blurStyle(4)"/>
+        <div class="iconDelete" v-show="realNameShow" @click="loginForm.realName=''">
+          <img src="@/assets/images/delete.png">
+        </div>
+      </div>
+      <div class="fieldInput">
         <span>手机号</span>
         <van-field :style="{borderBottom:styleBorder.phoneStyle}"  v-model="loginForm.phone" placeholder="请输入手机号" maxlength="11" @focus="focusStyle(1)"  @blur="blurStyle(1)"/>
         <div class="iconDelete" v-show="phoneShow" @click="loginForm.phone=''">
@@ -41,17 +48,20 @@ export default {
       loginForm: {
         phone: '',
         password: '',
-        code: ''
+        code: '',
+        realName: ''
       },
       phoneShow: false,
       passwordShow: false,
       codeShow: false,
+      realNameShow: false,
       timeDate: '获取验证码',
       initNum: null,
       styleBorder: {
         phoneStyle: '',
         codeStyle: '',
-        passwordStyle: ''
+        passwordStyle: '',
+        realNameStyle: ''
       }
     }
   },
@@ -64,6 +74,9 @@ export default {
     },
     'loginForm.code' (newValue, oldValue) {
       this.codeShow = !!newValue
+    },
+    'loginForm.realName' (newValue, oldValue) {
+      this.realNameShow = !!newValue
     }
   },
   created () {
@@ -126,8 +139,10 @@ export default {
         this.styleBorder.phoneStyle = color
       } else if (form === 2) {
         this.styleBorder.codeStyle = color
-      } else {
+      } else if (form === 3) {
         this.styleBorder.passwordStyle = color
+      } else {
+        this.styleBorder.realNameStyle = color
       }
     },
     blurStyle (form) {
@@ -136,8 +151,10 @@ export default {
         this.styleBorder.phoneStyle = color
       } else if (form === 2) {
         this.styleBorder.codeStyle = color
-      } else {
+      } else if (form === 3) {
         this.styleBorder.passwordStyle = color
+      } else {
+        this.styleBorder.realNameStyle = color
       }
     }
   }
@@ -149,6 +166,7 @@ export default {
     box-shadow: 0px 2px 7px 0px rgba(24,88,218,0.33);
     background: linear-gradient(135deg,#68a9fe, #4f89f8);
     padding:49px 50px 0 ;
+    position: relative;
     .logoTitle {
       font-size: 22px;
       font-weight: 700;
@@ -190,13 +208,16 @@ export default {
       }
     }
     .loginBtn {
-      width: 100%;
+      width: calc(100% - 100px);
       height: 44px;
       background: #ffffff;
       border-radius: 8px;
       box-shadow: 0px 2px 7px 0px rgba(24,88,218,0.33);
       color: #3c7cf7;
-      margin-top: 81px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 8%;
     }
     .loginLogo {
       margin-top: 92px;

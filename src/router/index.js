@@ -32,7 +32,7 @@ const routes = [
     path: '/addDepartmentList',
     name: 'addDepartmentList',
     component: () => import('@/views/departmentList/addDepartmentList.vue'),
-    meta: { title: '添加科室', keepAlive: false, auth: false }
+    meta: { title: '查看科室', keepAlive: false, auth: false }
   },
   {
     path: '/addDepartmentPeople',

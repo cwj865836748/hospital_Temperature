@@ -133,6 +133,9 @@ export default {
           &.hot {
             color: #ff574e;
           }
+          &.cold {
+            color: #3674f6;
+          }
         }
       }
       .tempIcon {

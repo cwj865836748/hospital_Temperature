@@ -91,7 +91,7 @@ export default {
       const { result } = await api.user.roomList(params)
       this.roomList = [...this.roomList, ...result.list.rows]
       this.total = result.list.total
-      document.title = result.departmentName
+      document.title = result.departmentName || '科室列表'
       this.page++
       setTimeout(() => {
         this.rush = true

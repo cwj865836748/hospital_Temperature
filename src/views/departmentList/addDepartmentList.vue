@@ -1,7 +1,7 @@
 <template>
   <div class="app_content bgGrey">
     <div v-if="departmentList.length">
-      <div class="addDepartment">您当前可以添加科室</div>
+      <div class="addDepartment">您当前可以管理的科室</div>
       <div class="departmentList flex-x-between flex-wrap">
         <div class="departmentDetail" v-for="(item,index) in departmentList" :key="index">
           <div class="departmentPic">
@@ -10,7 +10,7 @@
           <div class="departmentTitle">{{item.departmentName}}</div>
         </div>
 
-        <div class="addBtn  flex-xy-center" @click="addDepartment">一键添加</div>
+<!--        <div class="addBtn  flex-xy-center" @click="addDepartment">一键添加</div>-->
       </div>
     </div>
     <div v-else>
@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     async getList () {
-      const { result } = await api.user.addDepartmentAllList()
+      const { result } = await api.user.addDepartmentList()
       this.departmentList = result
     },
     async addDepartment () {
@@ -76,6 +76,8 @@ export default {
           width: 100%;
           height: 80px;
           margin-bottom: 11px;
+          border-radius: 4px;
+          overflow: hidden;
           img {
             width: 100%;
             height: 100%;

@@ -24,9 +24,9 @@
     </div>
   </div>
   <div class="loginBtn flex-xy-center" @click="login">登录</div>
-  <div class="loginLogo flex-xy-center">
-    <img src="@/assets/images/logo2.png"/>
-  </div>
+<!--  <div class="loginLogo flex-xy-center">-->
+<!--    <img src="@/assets/images/logo2.png"/>-->
+<!--  </div>-->
 </div>
 </template>
 

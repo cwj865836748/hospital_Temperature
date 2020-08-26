@@ -11,7 +11,7 @@
         <div class="policeTitle">{{`${item.hospitalName}/${item.departmentName}/${item.roomName}/${item.deviceName}`}}</div>
         <div class="policeStatus flex-x-between">
           <div class="policeType flex-y-between">
-            <div class="title">{{item.warnType|warnType}}</div>
+            <div class="title">{{item.warnType}}</div>
             <div class="type">报警类型</div>
           </div>
           <div class="policeType flex-y-between">

@@ -11,6 +11,9 @@ export default {
     },
     dataList: {
       type: Array
+    },
+    hotOrCold: {
+      type: Number
     }
   },
   data () {
@@ -36,7 +39,7 @@ export default {
         textStyle: {
           color: '#3674f6'
         },
-        formatter: '{c}℃'
+        formatter: `{c}${!this.hotOrCold ? '℃' : '%RH'}`
       },
       grid: {
         x: 30,

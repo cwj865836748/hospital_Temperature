@@ -24,12 +24,12 @@
         <span>温度</span>
       </div>
       <div :class="['btn flex-y-center flex-x-between',hotOrCold===1?'active':'']" @click="changeHotOrCold(1)">
-        <img :src="hotOrCold===1?require('@/assets/images/water.png'):require('@/assets/images/waterBlack.png')"/>
+        <img :src="hotOrCold===1?require('@/assets/images/waterMore.png'):require('@/assets/images/waterBlack.png')"/>
         <span>湿度</span>
       </div>
     </div>
     <div class="picEcharts">
-      <tempLine ref="tempLine" :dateList="dateList" :dataList="dataList" v-if="showPic"/>
+      <tempLine ref="tempLine" :dateList="dateList" :dataList="dataList" :hotOrCold="hotOrCold" v-if="showPic"/>
     </div>
     <div class="dateFormater flex-y-center">
       <span>时间段</span>
@@ -38,7 +38,7 @@
           <img src="@/assets/images/clock.png" class="clock"/>
           <span>{{timeModel|timeFilter}}</span>
           <div class="sanjiao">
-          <img src="@/assets/images/down.png" />
+          <img src="@/assets/images/down.png" :class="[monthShow?'rotate':'']"/>
           </div>
         </div>
         <div class="downMenuList flex-y-around" v-show="monthShow">
@@ -142,9 +142,9 @@ export default {
       deviceId: this.$route.query.id, // 当前设备id
       roomId: this.$route.query.roomId,
       nowDate: new Date(),
-      minDate: new Date(),
+      minDate: new Date(new Date().getFullYear() - 1, new Date().getMonth(), new Date().getDate()),
       currentDate: new Date(),
-      maxDate: new Date(new Date().getFullYear(), new Date().getMonth() + 3, new Date().getDate()),
+      maxDate: new Date(),
       dateShow: false, // 日期框
       monthShow: false, // 时间段框
       deviceList: [],
@@ -432,14 +432,15 @@ export default {
           img {
             width: 11px;
             height: 7px;
+            &.rotate {
+              transform:rotate(180deg);
+              -ms-transform:rotate(180deg);
+              -moz-transform:rotate(180deg);
+              -webkit-transform:rotate(180deg);
+              -o-transform:rotate(180deg);
+            }
           }
-         &.rotate {
-          transform:rotate(180deg);
-          -ms-transform:rotate(180deg);
-          -moz-transform:rotate(180deg);
-          -webkit-transform:rotate(180deg);
-          -o-transform:rotate(180deg);
-        }
+
         }
       }
       .downMenuList {
@@ -501,7 +502,7 @@ export default {
           margin-left: 5px;
           padding-top: 10px;
           img {
-            width: 12px;
+            width: 13px;
             height: 16px;
           }
           div {
@@ -511,7 +512,7 @@ export default {
         }
       }
       .tempHead:first-child {
-        margin-right: 36px;
+         width: 106px;
       }
       .tempTime {
         font-size: 15px;

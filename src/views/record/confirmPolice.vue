@@ -76,7 +76,7 @@ export default {
         return this.$toast('处理人姓名不能为空')
       }
       if (this.addForm.affirmRealName.length > 4) {
-        return this.$toast('处理人姓名不能超过四个字')
+        return this.$toast('确认人姓名不能超过四个字')
       }
       this.addForm.affirmTime = `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()} ${this.affirmTime}:00`
       const { code, desc } = await api.user.warnAffirm(this.addForm)
@@ -115,6 +115,7 @@ export default {
     border-radius: 6px;
     box-shadow: 0px 4px 8px 0px rgba(8,19,43,0.06);
     padding: 10px 15px 0;
+    border:none;
   }
   .certainTime {
     font-size: 18px;
@@ -146,5 +147,8 @@ export default {
     color: #ffffff;
     margin-top: 56px;
   }
+}
+.van-cell:not(:last-child)::after {
+  border:none
 }
 </style>

@@ -3,8 +3,8 @@
     <div class="departmentHead">
       <div class="flex-x-between">
         <div class="departBtn flex-xy-center" @click="$router.push('/addDepartmentList')">
-          <img src="@/assets/images/add.png">
-          <span>添加科室</span>
+<!--          <img src="@/assets/images/add.png">-->
+          <span>查看科室</span>
         </div>
         <div class="departBtn flex-xy-center" @click="$router.push('/addDepartmentPeople')">
           <img src="@/assets/images/add.png">
@@ -129,6 +129,8 @@ export default {
           width: 100%;
           height: 80px;
           margin-bottom: 11px;
+          border-radius: 4px;
+          overflow: hidden;
           img {
             width: 100%;
             height: 100%;

@@ -11,7 +11,7 @@ import echarts from 'echarts'
 import '@/plugins/vant'
 import '@/permission'
 import '@/filters'
-import './utils/vconsole'
+// import './utils/vconsole'
 Vue.prototype.$axios = { get, post }
 Vue.config.productionTip = false
 Vue.prototype.$echarts = echarts
