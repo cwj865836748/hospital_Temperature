@@ -70,6 +70,10 @@ export const timeSFM = val => {
   const arr = val.split(' ')
   return arr[1]
 }
+export const timeSFM1 = val => {
+  const arr = val.split(' ')
+  return arr[0]
+}
 export const warning = val => {
   if (!val) {
     return '无异常'

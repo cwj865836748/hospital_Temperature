@@ -8,11 +8,13 @@
           <div class="type">报警类型</div>
         </div>
         <div class="policeType flex-y-between">
-          <div class="time">{{detailObj.createTime|timeSFM}}</div>
+          <div v-if="detailObj.createTime" class="time" style="font-size: 12px;margin-bottom: 4px;">{{detailObj.createTime|timeSFM1}}/</div>
+          <div class="time" style="margin-bottom: 4px;">{{detailObj.createTime|timeSFM}}</div>
           <div class="type">发生时间</div>
         </div>
         <div class="policeType flex-y-between">
-          <div >{{detailObj.affirmTime|timeSFM}}</div>
+          <div v-if="detailObj.affirmTime" style="font-size: 12px;margin-bottom: 4px;">{{detailObj.affirmTime|timeSFM1}}/</div>
+          <div  style="margin-bottom: 4px;">{{detailObj.affirmTime|timeSFM}}</div>
           <div class="type">确定时间</div>
         </div>
         <div class="policeType flex-y-between">
@@ -46,12 +48,11 @@ export default {
     background: #f6f8fa;
     padding: 12px 15px;
     .policeList {
-      height: 129px;
       width: 100%;
       background: #ffffff;
       border-radius: 8px;
       box-shadow: 0px 4px 8px 0px rgba(8,19,43,0.06);
-      padding: 16px 12px 0;
+      padding: 16px 12px 20px;
 
       .policeTitle {
         color: #0f1421;

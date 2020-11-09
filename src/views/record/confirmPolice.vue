@@ -22,15 +22,13 @@
     style="height:44px"
   />
   <div class="policeTitle">确认时间</div>
-  <div class="certainTime" @click="dateShow=true">{{affirmTime}}</div>
+  <div class="certainTime" @click="dateShow=true">{{addForm.affirmTime|setTime}} {{addForm.affirmTime|setTime2}}</div>
   <div class="certainBtn flex-xy-center" @click="warnAffirm">确定</div>
   <van-popup v-model="dateShow" position="bottom">
     <van-datetime-picker
-      v-model="affirmTime"
-      type="time"
+      v-model="addForm.affirmTime"
+      type="datetime"
       title="选择时间"
-      :min-hour="minDate"
-      :max-hour="maxDate"
       @confirm="dateShow=false"
       @cancel="dateShow=false"
     />
@@ -41,6 +39,7 @@
 <script>
 import api from '@/api'
 import $ from 'jquery'
+import { dateFormat } from '@/utils/utils'
 export default {
   name: 'confirmPolice',
   data () {
@@ -49,13 +48,12 @@ export default {
         question: '',
         processMode: '',
         affirmRealName: '',
-        affirmTime: '',
+        affirmTime: new Date(),
         warnId: this.$route.query.id
       },
-      dateShow: false,
-      minDate: `${new Date().getHours() - 1}`,
-      maxDate: `${new Date().getHours() + 1}`,
-      affirmTime: `${new Date().getHours()}:${new Date().getMinutes()}`
+      dateShow: false
+      // minDate: `${new Date().getHours() - 1}`,
+      // maxDate: `${new Date().getHours() + 1}`
     }
   },
   created () {
@@ -78,7 +76,7 @@ export default {
       if (this.addForm.affirmRealName.length > 4) {
         return this.$toast('确认人姓名不能超过四个字')
       }
-      this.addForm.affirmTime = `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()} ${this.affirmTime}:00`
+      this.addForm.affirmTime = dateFormat(this.addForm.affirmTime, 'yyyy-MM-dd hh:mm')
       const { code, desc } = await api.user.warnAffirm(this.addForm)
       if (code === 200) {
         setTimeout(() => {
