@@ -76,7 +76,7 @@ export default {
       if (this.addForm.affirmRealName.length > 4) {
         return this.$toast('确认人姓名不能超过四个字')
       }
-      this.addForm.affirmTime = dateFormat(this.addForm.affirmTime, 'yyyy-MM-dd hh:mm')
+      this.addForm.affirmTime = dateFormat(this.addForm.affirmTime, 'yyyy-MM-dd hh:mm:ss')
       const { code, desc } = await api.user.warnAffirm(this.addForm)
       if (code === 200) {
         setTimeout(() => {
